@@ -1,18 +1,22 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using UnityEngine;
 
-public class BugController : MonoBehaviour
+public class BugController : Singleton<BugController>
 {
     public BugStates bugStates = BugStates.Move;
     public GameObject bugSprite;
+    public Material footPrintMat;
     public GameObject wayPointsGroup;
     public Transform[] waypoints;
     public float duration = 3f;
     private Tween pathTween;
     private Vector3[] path;
+    public Collider2D cd;
+    
    
     void Start()
     {
@@ -21,6 +25,7 @@ public class BugController : MonoBehaviour
         waypoints = wayPointsGroup.GetComponentsInChildren<Transform>()
             .Skip(1)
             .ToArray();
+        cd = this.transform.GetComponent<Collider2D>();
     }
 
     // Update is called once per frame
@@ -47,7 +52,8 @@ public class BugController : MonoBehaviour
         // 启动 DOTween 路径动画
         pathTween = transform.DOPath(path, duration, PathType.CatmullRom, PathMode.Ignore)
             .SetEase(Ease.Linear)
-            .OnUpdate(UpdateOrientation);
+            .OnUpdate(UpdateOrientation)
+            .OnComplete(SHowPV);
         bugStates = BugStates.Still;
     }
 
@@ -65,5 +71,16 @@ public class BugController : MonoBehaviour
         // 让 Sprite 的 Y 轴对齐切线方向
         bugSprite.transform.rotation = Quaternion.Euler(0, 0, angle - 90f); 
     }
-    
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("触发器与物体发生碰撞: " + other.gameObject.name);
+        footPrintMat.SetFloat("_isFootPrint",1);
+        Debug.Log("撞上");
+    }
+
+    private void SHowPV()
+    {
+        UIManaer_HomePage_1.Instance.ShowBenginPV();
+    }
 }
