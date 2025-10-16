@@ -1,0 +1,45 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8ef597f82e61d449828c514058e8d5, type: 3}
+  m_Name: HomePage_2
+  m_EditorClassIdentifier: 
+  lines:
+  - speaker: Homeridae
+    englishText: Hello kids...
+    customText: ^$%$^##$##
+    chineseText: 11111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: Nice to see you
+    customText: sdbhjagdyu
+    chineseText: 111111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: I will tell you how the world works
+    customText: huhuis8
+    chineseText: 111111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: I will tell you how the world works
+    customText: 45352
+    chineseText: 111111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: I will tell you how the world works
+    customText: 56456
+    chineseText: 111111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: I will tell you how the world works
+    customText: huhuis8
+    chineseText: 111111
+    voiceClip: {fileID: 0}
