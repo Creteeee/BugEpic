@@ -22,6 +22,7 @@ public class BugController : Singleton<BugController>
    
     void Start()
     {
+        StartCoroutine(WaitForGameManager());
         //查找wayPointsGroup
         //返回wayPointsFroup下的所有子物体
         InitializeWayPointsGroup();
@@ -29,6 +30,10 @@ public class BugController : Singleton<BugController>
             .Skip(1)
             .ToArray();
        
+    }
+    IEnumerator WaitForGameManager()
+    {
+        yield return new WaitUntil(() => GameManager.Instance != null);
     }
 
  
@@ -54,7 +59,7 @@ public class BugController : Singleton<BugController>
         bugStates = state;
     }
 
-    void BugMove()
+    public void BugMove()
     {
         path = new Vector3[waypoints.Length];
         for (int i = 0; i < waypoints.Length; i++)
@@ -136,7 +141,7 @@ public class BugController : Singleton<BugController>
     #region UI
     
     private void SHowPV()
-    {
+    { 
         UIManaer_HomePage_1.Instance.ShowBenginPV();
     }
 

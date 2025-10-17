@@ -14,32 +14,37 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lines:
   - speaker: Homeridae
-    englishText: Hello kids...
+    englishText: Hello kids, Nice to see you
     customText: ^$%$^##$##
     chineseText: 11111
     voiceClip: {fileID: 0}
   - speaker: Homeridae
-    englishText: Nice to see you
+    englishText: The whole world is made of 2d UI
     customText: sdbhjagdyu
     chineseText: 111111
     voiceClip: {fileID: 0}
   - speaker: Homeridae
-    englishText: I will tell you how the world works
+    englishText: You will be seen as the god of UI
     customText: huhuis8
     chineseText: 111111
     voiceClip: {fileID: 0}
   - speaker: Homeridae
-    englishText: I will tell you how the world works
+    englishText: Use the power wisely
     customText: 45352
     chineseText: 111111
     voiceClip: {fileID: 0}
   - speaker: Homeridae
-    englishText: I will tell you how the world works
+    englishText: I will check wether you had listened...
     customText: 56456
     chineseText: 111111
     voiceClip: {fileID: 0}
   - speaker: Homeridae
-    englishText: I will tell you how the world works
+    englishText: Let's see......
+    customText: huhuis8
+    chineseText: 111111
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: Freeze!
     customText: huhuis8
     chineseText: 111111
     voiceClip: {fileID: 0}

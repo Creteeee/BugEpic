@@ -16,6 +16,11 @@ public class GameManager : Singleton<GameManager>
     {
         NonDialogue,Dialogue,Beginning
     }
+
+    void Awake()
+    {
+        DontDestroyOnLoad(this);
+    }
     
     
 }

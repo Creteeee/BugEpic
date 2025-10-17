@@ -29,9 +29,15 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
     [SerializeField] private GameObject[] UIPages;
     [SerializeField] private string UIState;
 
+
+    IEnumerator WaitForGameManager()
+    {
+        yield return new WaitUntil(() => GameManager.Instance != null);
+    }
     
     void Start()
     {
+        StartCoroutine(WaitForGameManager());
         gameWindow = GameObject.Find("UI/GameWindow/Mask").transform.gameObject;
         gameWindow_Content = gameWindow.transform.Find("Content").gameObject;
         StartCoroutine(InitAfterFrame());
@@ -100,7 +106,6 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
         mySequence.Append(rt.DOAnchorPos(rt.anchoredPosition + new Vector2(-(UIManager_Whole.Instance.horizenOffset), 0), 
             1.5f)).OnComplete(RefreshPlayerStateByUITag);
         
-
     }
     public void InvokeBugMove()
     {

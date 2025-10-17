@@ -7,12 +7,24 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
 
     public static T Instance
     {
-        get => instance;
+        get
+        {
+            if (instance == null)
+            {
+                // 尝试在场景中查找
+                instance = FindObjectOfType<T>();
+                if (instance == null)
+                {
+                    Debug.LogWarning($"[Singleton<{typeof(T).Name}>] No instance found in scene.");
+                }
+            }
+            return instance;
+        }
     }
 
-    protected void Awake()
+    protected virtual void Awake()
     {
-        if (instance != null)
+        if (instance != null && instance != (T)this)
         {
             Destroy(gameObject);
         }
@@ -22,7 +34,7 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 
-    protected void OnDestroy()
+    protected virtual void OnDestroy()
     {
         if (instance == this)
         {
@@ -30,3 +42,4 @@ public class Singleton<T> : MonoBehaviour where T : Singleton<T>
         }
     }
 }
+
