@@ -1682,6 +1682,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   RainSystem: {fileID: 0}
+  water: {fileID: 0}
+  Maxwater: 0
+  position: {x: 0, y: 0}
 --- !u!61 &1692622248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1911,7 +1914,7 @@ PrefabInstance:
     - target: {fileID: 5850341104482303652, guid: 82b8cbd4800deb442931a148bc52ee18,
         type: 3}
       propertyPath: m_TagString
-      value: People
+      value: Untagged
       objectReference: {fileID: 0}
     - target: {fileID: 8608646262674309027, guid: 82b8cbd4800deb442931a148bc52ee18,
         type: 3}
@@ -2199,6 +2202,9 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   RainSystem: {fileID: 0}
+  water: {fileID: 0}
+  Maxwater: 0
+  position: {x: 0, y: 0}
 --- !u!61 &1874853970
 BoxCollider2D:
   m_ObjectHideFlags: 0
