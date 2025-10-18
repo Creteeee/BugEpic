@@ -41,7 +41,7 @@ public class BugController : Singleton<BugController>
     {
         if (bugStates == BugStates.Move)
         {
-            BugMove();
+            BugMove(() => {});
         }
         
     }
@@ -59,7 +59,7 @@ public class BugController : Singleton<BugController>
         bugStates = state;
     }
 
-    public void BugMove()
+    public void BugMove(System.Action onComplete) // 给 BugMove 方法添加回调参数
     {
         path = new Vector3[waypoints.Length];
         for (int i = 0; i < waypoints.Length; i++)
@@ -69,24 +69,27 @@ public class BugController : Singleton<BugController>
         {
             case GameManager.UIType.NonDialogue:
                 GameManager.Instance.playerState = GameManager.PlayerState.Active;
-                pathTween = transform.DOPath(path, (1/Speed) * waypoints.Length, PathType.CatmullRom, PathMode.Ignore)
+                pathTween = transform.DOPath(path, (1 / Speed) * waypoints.Length, PathType.CatmullRom, PathMode.Ignore)
                     .SetEase(Ease.Linear)
                     .OnUpdate(UpdateOrientation)
-                    .OnComplete(SlideUI);
+                    .OnComplete(() => {
+                        SlideUI();  // 完成后执行 SlideUI
+                        onComplete?.Invoke();  // 执行回调，通知外部方法完成
+                    });
                 break;
             case GameManager.UIType.Dialogue:
                 GameManager.Instance.playerState = GameManager.PlayerState.Dialogue;
-                
-                
                 break;
             case GameManager.UIType.Beginning:
                 GameManager.Instance.playerState = GameManager.PlayerState.Active;
-                pathTween = transform.DOPath(path, (1/Speed) * waypoints.Length, PathType.CatmullRom, PathMode.Ignore)
+                pathTween = transform.DOPath(path, (1 / Speed) * waypoints.Length, PathType.CatmullRom, PathMode.Ignore)
                     .SetEase(Ease.Linear)
                     .OnUpdate(UpdateOrientation)
-                    .OnComplete(SHowPV);
+                    .OnComplete(() => {
+                        SHowPV();  // 完成后执行 ShowPV
+                        onComplete?.Invoke();  // 执行回调，通知外部方法完成
+                    });
                 break;
-                
         }
 
         bugStates = BugStates.Still;

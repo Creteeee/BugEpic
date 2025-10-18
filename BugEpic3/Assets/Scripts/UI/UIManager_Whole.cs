@@ -14,6 +14,8 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
     [NonSerialized]public GameObject gameWindow_Content;
     [NonSerialized]public float horizenOffset;
     public float backOffset = 20;
+    public GameObject B_HomePage;
+    public GameObject B_Chapters;
     
     //Dialogue
     [SerializeField]private GameObject Speaker;//还没找
@@ -51,6 +53,8 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
         Speaker = GameObject.Find("UI/GameWindow/Mask/Speaker");
         activeUIIndex = 0;
         loadingWindow =  GameObject.Find("UI/GameWindow/Mask/LoadingWindow");
+        B_HomePage = GameObject.Find("UI/GameWindow/Mask/Content/B_HomePage");
+        B_Chapters = GameObject.Find("UI/GameWindow/Mask/Content/B_Chapters");
 
     }
 
@@ -205,10 +209,27 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
 
     #region TransitionScene
 
-    public static void LoadingNextScene()
+    public void LoadingNextScene(System.Action onComplete)
     {
-        
+        loadingWindow.SetActive(true);
+        Slider slider = loadingWindow.transform.Find("Slider").gameObject.GetComponent<Slider>();
+        slider.value = 0;
+        slider.DOValue(1, 4).SetEase(Ease.Linear).OnComplete(() =>
+        {
+            FinishLoadingNextScene();
+            onComplete?.Invoke(); // 动画完成后，调用回调函数（销毁物体）
+        });
     }
+
+    public void FinishLoadingNextScene()
+    {
+        RectTransform rtContent = GameObject.Find("UI/GameWindow/Mask/Content").GetComponent<RectTransform>();
+        rtContent.anchoredPosition = new Vector2(0, 0);
+        B_HomePage.SetActive(false);
+        B_Chapters.SetActive(false);
+        loadingWindow.SetActive(false);
+    }
+    
 
     #endregion
 }

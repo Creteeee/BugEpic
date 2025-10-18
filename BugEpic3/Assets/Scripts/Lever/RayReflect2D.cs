@@ -119,6 +119,6 @@ public class RayReflect2D : MonoBehaviour
 
     void BugMove()
     {
-        BugController.Instance.BugMove();
+        BugController.Instance.BugMove( ()=>{});
     }
 }

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,16 +25,27 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(this);
     }
 
-    public void FinishLevel()//游戏章节外放置加载动画，章节内不用
+    public void FinishLevel() // 游戏章节外放置加载动画，章节内不用
     {
-        levelIndex += 1;
         Transform parentTransform = GameObject.Find("UI/GameWindow/Mask/Content").transform;
         GameObject previousLevel = parentTransform.GetChild(0).gameObject;
-        GameObject newLevel = Instantiate(levels[levelIndex].gameObject,parentTransform);
+        GameObject newLevel = Instantiate(levels[levelIndex].gameObject, parentTransform);
         newLevel.transform.SetSiblingIndex(0);
-        BugController.Instance.BugMove();
 
+        // 让 BugMove 完成后，加载下一个场景
+        BugController.Instance.BugMove(() =>
+        {
+            // 在加载新场景时完成动画后销毁物体
+            UIManager_Whole.Instance.LoadingNextScene(() =>
+            {
+                Destroy(previousLevel.gameObject);  // 在加载完成后销毁之前的关卡
+            });
+        });
+
+        levelIndex += 1;
     }
     
+
+
     
 }
