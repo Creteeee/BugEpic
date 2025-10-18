@@ -11,16 +11,15 @@ public class LeverManager : MonoBehaviour
     [Range(0.1f, 5f)]
     public float pushSensitivity = 1f;
     
+    public float NegativerotationMultiplier = 2f;
     public float rotationMultiplier = 2f;
-
     public bool IsSystemActive { get; private set; } = true;
 
     private void Start()
     {
         lever.Initialize(this);
     }
-
-    // 吸附功能核心逻辑（未修改）
+    
     public bool CheckIfShouldSnap(Vector2 currentPosition)
     {
         if (targetPosition == null) return false;
@@ -30,7 +29,12 @@ public class LeverManager : MonoBehaviour
 
     public void OnLeverRotated(float rotationAngle)
     {
-        if (pushedObject != null)
+        if (rotationAngle>0)
+        {
+            float objectRotateAngle = rotationAngle * NegativerotationMultiplier;
+            pushedObject.RotateAroundPivot(objectRotateAngle);
+        }
+        else if (rotationAngle < 0)
         {
             float objectRotateAngle = rotationAngle * rotationMultiplier;
             pushedObject.RotateAroundPivot(objectRotateAngle);

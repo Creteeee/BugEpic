@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI; 
 public class PortalManager : Portal
 {
     public static PortalManager Instance;
@@ -49,19 +49,44 @@ public class PortalManager : Portal
 
     public void HandleTeleport(Transform entrance, Transform targetObj)
     {
-        int index = GetEntranceIndex(entrance);
-        if (index == -1) return;
-        
-        if (Time.time < entranceCooldowns[entrance])
+       int index = GetEntranceIndex(entrance);
+       
+        if (index == -1) 
         {
+         
             return;
         }
-        targetObj.position = targetPositions[index].position;
+    
+        if (Time.time < entranceCooldowns[entrance])
+        {
+       
+            return;
+        }
+
+
+        StartCoroutine(SwitchPos(entrance, targetObj,index));
         entranceCooldowns[entrance] = Time.time + cooldown;
     }
 
+    private IEnumerator SwitchPos(Transform entrance, Transform targetObj,int index)
+    {
+        GameObject TargetObj = targetObj.gameObject;
+        Image TargetImg = TargetObj.GetComponent<Image>();
+        TargetImg.enabled = false;
+        yield return new WaitForSeconds(0.5f);
+        targetObj.position = targetPositions[index].position;
+        TargetImg.enabled = true;
+    }
     private int GetEntranceIndex(Transform entrance)
     {
+     
+        string startNames = "";
+        foreach (var pos in startPositions)
+        {
+            startNames += pos != null ? pos.name + "，" : "空引用，";
+        }
+      
+    
         for (int i = 0; i < startPositions.Length; i++)
         {
             if (startPositions[i] == entrance)

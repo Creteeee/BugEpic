@@ -11,7 +11,9 @@ public class Portal : MonoBehaviour
     {
         if (other.CompareTag("People"))
         {
+           
             PortalManager.Instance.HandleTeleport(this.transform, other.transform);
+            Debug.Log("碰到了");
         }
     }
 }

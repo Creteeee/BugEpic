@@ -8,7 +8,7 @@ public class Lever : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHan
     public Transform pivotPoint; 
     public float dragAreaRadius ;  
     
-    public float maxRotationAngle = 20f;  
+    public float maxRotationAngle = 40f;  
     
     private LeverManager manager;
     private bool isDragging = false;
@@ -84,12 +84,17 @@ public class Lever : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHan
             {
                 Vector2 pivotPos = pivotPoint.position;
                 Vector2 mouseDir = (Vector2)worldPoint - pivotPos;
+
                 float targetAngle = Mathf.Atan2(mouseDir.y, mouseDir.x) * Mathf.Rad2Deg;
-                float angleDifference = Mathf.DeltaAngle(initialZRotation, targetAngle);
-                angleDifference = Mathf.Clamp(angleDifference, -maxRotationAngle, 0);
-                float finalAngle = initialZRotation + angleDifference;
-                transform.eulerAngles = new Vector3(0, 0, finalAngle);
                 
+                float angleDifference = Mathf.DeltaAngle(initialZRotation, targetAngle);
+                
+                angleDifference = Mathf.Clamp(angleDifference, -maxRotationAngle, maxRotationAngle);
+                
+                float finalAngle = initialZRotation + angleDifference;
+                
+                transform.eulerAngles = new Vector3(0, 0, finalAngle);
+    
                 manager.OnLeverRotated(angleDifference); 
             }
         }
@@ -129,6 +134,4 @@ public class Lever : MonoBehaviour, IDragHandler, IEndDragHandler, IBeginDragHan
         transform.eulerAngles = new Vector3(0, 0, initialZRotation);
         manager.OnLeverReset();
     }
-    
-    
 }
