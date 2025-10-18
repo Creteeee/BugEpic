@@ -22,6 +22,7 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
     [SerializeField]private GameObject Speaker;//还没找
     private GameObject bubbleGroup;
     private GameObject bubblePrefab;
+    private TMP_Text captions;
     [SerializeField]private List<GameObject> bubbles;
     private int dialogueIndex = 0;
     private DialogueData  dialogueData;
@@ -57,6 +58,7 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
         B_HomePage = GameObject.Find("UI/GameWindow/Mask/Content/B_HomePage");
         B_Chapters = GameObject.Find("UI/GameWindow/Mask/Content/B_Chapters");
         B_TellStory = GameObject.Find("UI/GameWindow/Mask/Content/B_TellStory");
+        captions = GameObject.Find("UI/GameWindow/Mask/Content/B_TellStory/Captions").GetComponent<TMP_Text>();
         Speaker.SetActive(false);
 
     }
@@ -153,7 +155,8 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
             Debug.Log("有对话");
         }
 
-        text.text = dialogueData.lines[dialogueIndex].chineseText;
+        text.text = dialogueData.lines[dialogueIndex].customText;
+        captions.text = dialogueData.lines[dialogueIndex].chineseText;
 
         bubbles.Add(bubble); // 将新气泡添加到列表中
 
@@ -235,7 +238,7 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
         loadingWindow.SetActive(true);
         Slider slider = loadingWindow.transform.Find("Slider").gameObject.GetComponent<Slider>();
         slider.value = 0;
-        slider.DOValue(1, 4).SetEase(Ease.Linear).OnComplete(() =>
+        slider.DOValue(1, 6).SetEase(Ease.Linear).OnComplete(() =>
         {
             FinishLoadingNextScene();
             onComplete?.Invoke(); // 动画完成后，调用回调函数（销毁物体）
