@@ -162,18 +162,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &76394347
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 76394344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5e8a90d167c374186e2021c9c4f7e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &76394348
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1583,10 +1571,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 2098419642}
-    - targetCorrespondingSourceObject: {fileID: 5850341104482303652, guid: 82b8cbd4800deb442931a148bc52ee18,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2098419641}
   m_SourcePrefab: {fileID: 100100000, guid: 82b8cbd4800deb442931a148bc52ee18, type: 3}
 --- !u!1 &1676794522
 GameObject:
@@ -1684,7 +1668,8 @@ MonoBehaviour:
   RainSystem: {fileID: 0}
   water: {fileID: 0}
   Maxwater: 0
-  position: {x: 0, y: 0}
+  position: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!61 &1692622248
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1914,7 +1899,7 @@ PrefabInstance:
     - target: {fileID: 5850341104482303652, guid: 82b8cbd4800deb442931a148bc52ee18,
         type: 3}
       propertyPath: m_TagString
-      value: Untagged
+      value: People
       objectReference: {fileID: 0}
     - target: {fileID: 8608646262674309027, guid: 82b8cbd4800deb442931a148bc52ee18,
         type: 3}
@@ -1943,10 +1928,6 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 76394348}
-    - targetCorrespondingSourceObject: {fileID: 5850341104482303652, guid: 82b8cbd4800deb442931a148bc52ee18,
-        type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 76394347}
     - targetCorrespondingSourceObject: {fileID: 5850341104482303652, guid: 82b8cbd4800deb442931a148bc52ee18,
         type: 3}
       insertIndex: -1
@@ -2204,7 +2185,8 @@ MonoBehaviour:
   RainSystem: {fileID: 0}
   water: {fileID: 0}
   Maxwater: 0
-  position: {x: 0, y: 0}
+  position: {fileID: 0}
+  parent: {fileID: 0}
 --- !u!61 &1874853970
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2518,18 +2500,6 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1459112635}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2098419641
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2098419639}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b5e8a90d167c374186e2021c9c4f7e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!61 &2098419642
 BoxCollider2D:
   m_ObjectHideFlags: 0
