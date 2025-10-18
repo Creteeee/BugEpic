@@ -44,4 +44,5 @@ public class UIManaer_HomePage_1 : Singleton<UIManaer_HomePage_1>
         SceneManager.LoadScene(sceneName);
     }
     
+    
 }
