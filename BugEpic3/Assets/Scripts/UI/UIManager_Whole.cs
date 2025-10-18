@@ -5,7 +5,6 @@ using DG.Tweening;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class UIManager_Whole : Singleton<UIManager_Whole>
@@ -28,6 +27,9 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
     public int activeUIIndex = 0;
     [SerializeField] private GameObject[] UIPages;
     [SerializeField] private string UIState;
+    
+    //Loading
+    public GameObject loadingWindow;
 
 
     IEnumerator WaitForGameManager()
@@ -48,6 +50,7 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
         RefreshPlayerStateByUITag();
         Speaker = GameObject.Find("UI/GameWindow/Mask/Speaker");
         activeUIIndex = 0;
+        loadingWindow =  GameObject.Find("UI/GameWindow/Mask/LoadingWindow");
 
     }
 
@@ -198,5 +201,14 @@ public class UIManager_Whole : Singleton<UIManager_Whole>
                 break;
         }
     }
+    #endregion
+
+    #region TransitionScene
+
+    public static void LoadingNextScene()
+    {
+        
+    }
+
     #endregion
 }
