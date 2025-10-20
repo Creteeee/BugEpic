@@ -4,15 +4,28 @@ using UnityEngine;
 
 public class SoftwareDownBar : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+   public GameObject softwareWindow;
+   public SoftwareType type = SoftwareType.Other;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+   public void OverlayOnTop()
+   {
+      int lastIndex = softwareWindow.transform.parent.childCount - 1;
+      int targetIndex = Mathf.Max(0, lastIndex - 3); 
+      softwareWindow.transform.SetSiblingIndex(targetIndex);
+      if (type == SoftwareType.Other)
+      {
+         GameManager.Instance.playerState = GameManager.PlayerState.Froze;
+         Time.timeScale = 0;
+      }
+      else
+      {
+         GameManager.Instance.playerState = GameManager.PlayerState.Dialogue;
+         Time.timeScale = 1;
+      }
+   }
+
+   public enum SoftwareType
+   {
+      Game,Other
+   }
 }

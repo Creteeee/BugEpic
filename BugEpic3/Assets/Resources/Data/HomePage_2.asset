@@ -32,7 +32,7 @@ MonoBehaviour:
   - speaker: Homeridae
     englishText: seweq
     customText: ^*%&%$%^#^
-    chineseText: "\u60A8\u4E00\u5B9A\u80FD\u591F\u7406\u89E3\u6211\u5728\u8BF4\u4EC0\u4E48\u5427\uFF01"
+    chineseText: "\u60A8\u4E00\u5B9A\u80FD\u591F\u7406\u89E3\u6211\u5728\u8BF4\u4EC0\u4E48\u5427!"
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: Freeze!

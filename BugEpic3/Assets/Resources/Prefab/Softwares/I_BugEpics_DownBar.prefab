@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 45216692014520590}
   - component: {fileID: 662497432852267715}
   - component: {fileID: 3513663336585059535}
+  - component: {fileID: 1117161777444648707}
   m_Layer: 5
   m_Name: I_BugEpics_DownBar
   m_TagString: Untagged
@@ -123,7 +124,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7460558521368376212}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1117161777444648707}
+        m_TargetAssemblyTypeName: SoftwareDownBar, Assembly-CSharp
+        m_MethodName: OverlayOnTop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &4920622600206576481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -308,3 +321,16 @@ MonoBehaviour:
   softwareWindow: {fileID: 0}
   downBarSoftwareInst: {fileID: 0}
   DownBarSoftwareRoot: {fileID: 0}
+--- !u!114 &1117161777444648707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1842580164911857154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a2675e7f03df08439960a19e9d406fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  softwareWindow: {fileID: 0}

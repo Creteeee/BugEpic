@@ -19,7 +19,8 @@ public class Software : MonoBehaviour
         softwareWindow.SetActive(true);
         if (downBarSoftwareInst == null)
         {
-            downBarSoftwareInst = Instantiate(downBarSoftwarePrefab, DownBarSoftwareRoot);   
+            downBarSoftwareInst = Instantiate(downBarSoftwarePrefab, DownBarSoftwareRoot);
+            downBarSoftwareInst.GetComponent<SoftwareDownBar>().softwareWindow = softwareWindow;
         }
     }
     public void CancelSoftware()
@@ -32,8 +33,5 @@ public class Software : MonoBehaviour
         softwareWindow.SetActive(false);
     }
 
-    public void OverlayOnTop()
-    {
-        softwareWindow.transform.SetAsLastSibling();
-    }
+
 }
