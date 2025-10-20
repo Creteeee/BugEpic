@@ -26,46 +26,46 @@ MonoBehaviour:
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: You will be seen as the god of UI
-    customText: huhuis8
+    customText: waibibabo
     chineseText: "xxxx\u8FD9\u91CC\u63D2\u5165\u7C7B\u89C4\u5219\u602A\u8C08\u7684\u89C4\u5219\u4E16\u754C\u89C2"
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: seweq
-    customText: 45352
-    chineseText: "\u54E6, \u5929\u554A! \u6211\u627E\u4E0D\u5230\u6211\u4EEC\u7684\u53F2\u4E66\u4E86!"
-    voiceClip: {fileID: 0}
-  - speaker: Homeridae
-    englishText: "\u60A8\u53EF\u4EE5\u968F\u4FBFsui'bia"
-    customText: 56456
-    chineseText: "\u53EF\u60DC\u6211\u8001\u773C\u660F\u82B1"
-    voiceClip: {fileID: 0}
-  - speaker: Homeridae
-    englishText: Let's see......
-    customText: huhuis8
-    chineseText: "\u8BF7\u6839\u636E\u6211\u544A\u8BC9\u60A8\u7684\u89C4\u5219\u795B\u9664\u9ED1\u6697\u5427"
+    customText: ^*%&%$%^#^
+    chineseText: "\u60A8\u4E00\u5B9A\u80FD\u591F\u7406\u89E3\u6211\u5728\u8BF4\u4EC0\u4E48\u5427\uFF01"
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: Freeze!
     customText: huhuis8
-    chineseText: "\u54E6\u5929\u5450! \u521A\u521A\u6211\u4EFF\u4F5B\u5931\u53BB\u4E86\u751F\u547D......"
+    chineseText: "\u54E6\u5929\u5450\uFF01\u521A\u521A\u6211\u4EFF\u4F5B\u5931\u53BB\u4E86\u751F\u547D"
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: Freeze!
+    customText: '%^&$%^#%$#%'
+    chineseText: "\u662F\u60A8\u6551\u4E86\u6211!"
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: Freeze!
+    customText: ^*^%&^$%&^
+    chineseText: "\u679C\u7136\u662F\u60A8, \u795E!"
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: Freeze!
     customText: huhuis8
-    chineseText: "\u662F\u60A8\u6551\u4E86\u6211! \u66FF\u6211\u627E\u56DE\u4E86\u4E66"
+    chineseText: "\u60A8\u5C31\u662F\u6211\u4EECepiks\u7684\u795E!"
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: Freeze!
     customText: huhuis8
-    chineseText: "\u679C\u7136\u662F\u60A8\uFF0C\u795E\uFF01"
+    chineseText: "\u6211\u771F\u5B9E\u89C1\u5230\u4E86\u795E\u8FF9!"
+    voiceClip: {fileID: 0}
+  - speaker: Homeridae
+    englishText: Freeze!
+    customText: huhuis8
+    chineseText: "\u795E, \u60A8\u8FC7\u5F80\u7684\u964D\u4E34\u6211\u90FD\u6709\u4E00\u4E00\u8BB0\u5F55..."
     voiceClip: {fileID: 0}
   - speaker: Homeridae
     englishText: Freeze!
     customText: huhuis8
     chineseText: "\u4F5C\u4E3A\u60A8\u8654\u8BDA\u7684\u4E66\u8BB0\u5B98, \u6211\u6709\u5E78\u80FD\u591F\u4EB2\u773C\u89C1\u5230\u60A8\u7684\u590D\u523B\u5417?"
-    voiceClip: {fileID: 0}
-  - speaker: Homeridae
-    englishText: Freeze!
-    customText: huhuis8
-    chineseText: "\u8BF7\u8FDB\u5165\u7AE0\u8282\u63A2\u7D22\u6211\u4EEC\u7684\u6545\u4E8B"
     voiceClip: {fileID: 0}
