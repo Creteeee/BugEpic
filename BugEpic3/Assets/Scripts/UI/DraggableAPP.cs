@@ -19,6 +19,9 @@ public class DraggableApp : MonoBehaviour, IDragHandler, IEndDragHandler
     
     public void OnDrag(PointerEventData eventData)
     {
+        int lastIndex = transform.parent.childCount - 1;
+        int targetIndex = Mathf.Max(0, lastIndex - 3); 
+        transform.SetSiblingIndex(targetIndex);
         rectTransform.anchoredPosition += eventData.delta * dragSpeed;
     }
     

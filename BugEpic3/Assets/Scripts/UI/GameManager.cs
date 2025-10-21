@@ -25,6 +25,7 @@ public class GameManager : Singleton<GameManager>
         DontDestroyOnLoad(this);
     }
 
+    
     public void FinishLevel() // 游戏章节外放置加载动画，章节内不用
     {
         Transform parentTransform = GameObject.Find("UI/GameWindow/Mask/Content").transform;
