@@ -26,8 +26,8 @@ public class DraggableApp : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         if (snapToGrid && gridSystem != null)
         {
-            Vector2 worldPosition = rectTransform.position;
-            Vector2 nearestCenter = gridSystem.GetNearestGridCenter(worldPosition);
+            Vector3 worldPosition = rectTransform.position;
+            Vector3 nearestCenter = gridSystem.GetNearestGridCenter(worldPosition);
             rectTransform.position = nearestCenter;
         }
     }

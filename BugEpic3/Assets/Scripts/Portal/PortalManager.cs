@@ -5,8 +5,9 @@ using UnityEngine.UI;
 public class PortalManager : Portal
 {
     public static PortalManager Instance;
-    [SerializeField] private Transform[] targetPositions;
     [SerializeField] private Transform[] startPositions;
+    [SerializeField] private Transform[] targetPositions;
+ 
     [SerializeField] private float cooldown = 0.5f;
     private Dictionary<Transform, float> entranceCooldowns = new Dictionary<Transform, float>();
 

@@ -9,7 +9,7 @@ public class WindowsGridSystem : MonoBehaviour
     public int rows = 6;
     public int colums = 12;
 
-    private Vector2[] gridCenters;
+    private Vector3[] gridCenters;
     private Rect windowRect;  
     
     // Start is called before the first frame update
@@ -28,7 +28,7 @@ public class WindowsGridSystem : MonoBehaviour
         float cellHeight = windowRect.height / rows;
         
         
-        gridCenters = new Vector2[rows * colums];
+        gridCenters = new Vector3[rows * colums];
         
         
         for (int row = 0; row < rows; row++)
@@ -40,27 +40,27 @@ public class WindowsGridSystem : MonoBehaviour
                 float y = -(row * cellHeight) - (cellHeight / 2) + (windowRect.height / 2-10);
                 
                 
-                Vector2 localCenter = new Vector2(x, y);
-                Vector2 worldCenter = mainWindows.TransformPoint(localCenter);
+                Vector3 localCenter = new Vector3(x, y,0);
+                Vector3 worldCenter = mainWindows.TransformPoint(localCenter);
                 
                 
                 gridCenters[row * colums + col] = worldCenter;
             }
         }
     }
-    public Vector2 GetNearestGridCenter(Vector2 targetPosition)
+    public Vector3 GetNearestGridCenter(Vector3 targetPosition)
     {
         if (gridCenters == null || gridCenters.Length == 0)
         {
             CalculateGridCenters();
         }
         
-        Vector2 nearestCenter = gridCenters[0];
-        float minDistance = Vector2.Distance(targetPosition, nearestCenter);
+        Vector3 nearestCenter = gridCenters[0];
+        float minDistance = Vector3.Distance(targetPosition, nearestCenter);
         
-        foreach (Vector2 center in gridCenters)
+        foreach (Vector3 center in gridCenters)
         {
-            float distance = Vector2.Distance(targetPosition, center);
+            float distance = Vector3.Distance(targetPosition, center);
             if (distance < minDistance)
             {
                 minDistance = distance;
@@ -87,8 +87,8 @@ public class WindowsGridSystem : MonoBehaviour
         for (int col = 0; col <= colums; col++)
         {
             float x = (col * cellWidth) - (windowRect.width / 2);
-            Vector2 start = mainWindows.TransformPoint(new Vector2(x, windowRect.height / 2));
-            Vector2 end = mainWindows.TransformPoint(new Vector2(x, -windowRect.height / 2));
+            Vector3 start = mainWindows.TransformPoint(new Vector3(x, windowRect.height / 2,0));
+            Vector3 end = mainWindows.TransformPoint(new Vector3(x, -windowRect.height / 2,0));
             Gizmos.DrawLine(start, end);
         }
         
@@ -96,8 +96,8 @@ public class WindowsGridSystem : MonoBehaviour
         for (int row = 0; row <= rows; row++)
         {
             float y = -(row * cellHeight) + (windowRect.height / 2);
-            Vector2 start = mainWindows.TransformPoint(new Vector2(-windowRect.width / 2, y));
-            Vector2 end = mainWindows.TransformPoint(new Vector2(windowRect.width / 2, y));
+            Vector3 start = mainWindows.TransformPoint(new Vector3(-windowRect.width / 2, y,0));
+            Vector3 end = mainWindows.TransformPoint(new Vector3(windowRect.width / 2, y,0));
             Gizmos.DrawLine(start, end);
         }
         
@@ -108,8 +108,8 @@ public class WindowsGridSystem : MonoBehaviour
             {
                 float x = (col * cellWidth) + (cellWidth / 2) - (windowRect.width / 2);
                 float y = -(row * cellHeight) - (cellHeight / 2) + (windowRect.height / 2-13);
-                Vector2 center = mainWindows.TransformPoint(new Vector2(x, y));
-                Gizmos.DrawSphere(center, 5f);
+                Vector3 center = mainWindows.TransformPoint(new Vector3(x, y,0));
+                Gizmos.DrawSphere(center, 1f);
             }
         }
     }

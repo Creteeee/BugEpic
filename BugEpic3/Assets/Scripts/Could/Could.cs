@@ -7,14 +7,14 @@ using UnityEngine;
 public class Could : MonoBehaviour
 {
 
-    [SerializeField] private Object[] rain;
+    [SerializeField] private GameObject[] rain;
     [SerializeField] private ParticleSystem RainSystem;
     [SerializeField] private GameObject water;
     public int Maxwater;
-    public Transform position;
+    public RectTransform position;
     private BoxCollider2D box;
-
-    [SerializeField] private Transform parent;
+    private bool isRaining;
+    [SerializeField] private RectTransform parent;
     private IEnumerator currentRainCoroutine;
     // Start is called before the first frame update
       void Start()
@@ -27,6 +27,7 @@ public class Could : MonoBehaviour
     {
         if (other.CompareTag("Cup"))
         {
+            isRaining = true;
             Debug.Log("杯子进入，开始下雨");
             if (currentRainCoroutine != null)
             {
@@ -34,36 +35,41 @@ public class Could : MonoBehaviour
             }
             currentRainCoroutine = Raining();
             StartCoroutine(currentRainCoroutine);
+            HideRainObjects();
         }
     }
 
-
+    
     private void OnTriggerExit2D(Collider2D other)
     {
         if (other.CompareTag("Cup"))
         {
+            isRaining = false;
             Debug.Log("杯子离开，停止下雨");
 
-            if (currentRainCoroutine != null)
-            {
-                StopCoroutine(currentRainCoroutine);
-                currentRainCoroutine = null; 
-            }
-
-            ShowRainObjects();
-
+           StopRaining();
+           HideRainObjects();
         }
     }
 
-    // 下雨协程（均匀生成雨滴）
+    public void StopRaining()
+    {
+        if (currentRainCoroutine != null)
+        {
+            StopCoroutine(currentRainCoroutine);
+            currentRainCoroutine = null; 
+        }
+
+        ShowRainObjects();
+    }
     private IEnumerator Raining()
     {
         // 循环生成雨滴，直到达到最大数量或被停止
         for (int i = 0; i < Maxwater; i++)
         {
             // 在指定区域内随机生成雨滴（基于rainArea的位置）
-            float randomX = Random.Range(position.position.x - 40, position.position.x + 40);
-            Vector3 dropPos = new Vector3(randomX, position.position.y, 0);
+            float randomX = Random.Range(position.position.x - 10, position.position.x + 10);
+            Vector3 dropPos = new Vector3(randomX, position.position.y, position.position.z);
             // 实例化雨滴到父物体下
             Instantiate(water, dropPos, Quaternion.identity, parent);
             // 每0.1秒生成一个，保持均匀间隔
@@ -76,8 +82,15 @@ public class Could : MonoBehaviour
     {
         foreach (var obj in rain)
         {
-            if (obj != null)
+            if (obj != null && isRaining)
+            {
                 obj.GameObject().SetActive(false);
+            }
+
+            if (obj != null && !isRaining)
+            {
+                obj.GameObject().SetActive(true);
+            }
         }
     }
 
